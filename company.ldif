@@ -1,0 +1,198 @@
+version: 1
+
+dn: ou=Groups,dc=company,dc=local
+objectClass: top
+objectClass: organizationalunit
+ou: Groups
+
+dn: ou=People,dc=company,dc=local
+objectClass: top
+objectClass: organizationalunit
+ou: People
+
+dn: cn=ClusterAdmins,ou=Groups,dc=company,dc=local
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: ClusterAdmins
+description: The group of openshift cluster adminstrators
+uniqueMember: uid=rama,ou=People,dc=company,dc=local
+uniqueMember: uid=krishna,ou=People,dc=company,dc=local
+uniqueMember: uid=admin,ou=People,dc=company,dc=local
+uniqueMember: uid=kameshs,ou=People,dc=company,dc=local
+
+dn: cn=Managers,ou=Groups,dc=company,dc=local
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: Managers
+description: The group of Managers
+uniqueMember: uid=julia,ou=People,dc=company,dc=local
+uniqueMember: uid=james,ou=People,dc=company,dc=local
+
+dn: cn=Developers,ou=Groups,dc=company,dc=local
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: Developers
+description: The group of developers
+uniqueMember: uid=martin,ou=People,dc=company,dc=local
+uniqueMember: uid=lotti,ou=People,dc=company,dc=local
+uniqueMember: uid=david,ou=People,dc=company,dc=local
+
+dn: cn=Business,ou=Groups,dc=company,dc=local
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: Business
+description: The Business Users
+uniqueMember: uid=raja,ou=People,dc=company,dc=local
+
+dn: uid=david,ou=People,dc=company,dc=local
+objectClass: organizationalPerson
+objectClass: person
+objectClass: extensibleObject
+objectClass: uidObject
+objectClass: inetOrgPerson
+objectClass: top
+cn: David
+sn: Berger
+uid: david
+givenName: David Berger
+mail: david.berger@company.local
+member: cn=Developers,ou=Groups,dc=company,dc=local
+mobile: 9900001103
+ou: People
+userPassword: password
+
+dn: uid=lotti,ou=People,dc=company,dc=local
+objectClass: organizationalPerson
+objectClass: person
+objectClass: extensibleObject
+objectClass: uidObject
+objectClass: inetOrgPerson
+objectClass: top
+cn: Lotti
+sn: Stein
+uid: lotti
+givenName: Lotti Stein
+mail: lotti.stein@company.local
+member: cn=consumers,ou=Groups,dc=company,dc=local
+mobile: 9900001106
+ou: People
+userPassword: password
+
+dn: uid=rolf,ou=People,dc=company,dc=local
+objectClass: organizationalPerson
+objectClass: person
+objectClass: extensibleObject
+objectClass: uidObject
+objectClass: inetOrgPerson
+objectClass: top
+cn: Rolf
+sn: Hess
+uid: rolf
+givenName: Rolf Hess
+mail: rolf.hess@company.local
+member: cn=business,ou=Groups,dc=company,dc=local
+mobile: 9900001109
+ou: People
+userPassword: password
+
+dn: uid=julia,ou=People,dc=company,dc=local
+objectClass: organizationalPerson
+objectClass: person
+objectClass: extensibleObject
+objectClass: uidObject
+objectClass: inetOrgPerson
+objectClass: top
+cn: Julia
+sn: Maurer
+uid: julia
+givenName: Julia Maurer
+mail: julia.maurer@company.local
+member: cn=Managers,ou=Groups,dc=company,dc=local
+mobile: 9900001100
+ou: People
+userPassword: password
+
+dn: uid=martin,ou=People,dc=company,dc=local
+objectClass: organizationalPerson
+objectClass: person
+objectClass: extensibleObject
+objectClass: uidObject
+objectClass: inetOrgPerson
+objectClass: top
+cn: Martin
+sn: Gall
+uid: martin
+givenName: Martin Gall
+mail: martin.gall@company.local
+member: cn=consumers,ou=Groups,dc=company,dc=local
+mobile: 9900001107
+ou: People
+userPassword: password
+
+dn: uid=james,ou=People,dc=company,dc=local
+objectClass: organizationalPerson
+objectClass: person
+objectClass: extensibleObject
+objectClass: uidObject
+objectClass: inetOrgPerson
+objectClass: top
+cn: James
+sn: Masse
+uid: james
+givenName: James Masse
+mail: james@company.local
+member: cn=Managers,ou=Groups,dc=company,dc=local
+mobile: 9900001104
+ou: People
+userPassword: password
+
+dn: uid=raja,ou=People,dc=company,dc=local
+objectClass: organizationalPerson
+objectClass: person
+objectClass: extensibleObject
+objectClass: uidObject
+objectClass: inetOrgPerson
+objectClass: top
+cn: Raja
+sn: Fauchs
+uid: raja
+givenName: Raja Fauchs
+mail: raja.fauchs@company.local
+member: cn=business,ou=Groups,dc=company,dc=local
+mobile: 9900001108
+ou: People
+userPassword: password
+
+dn: uid=john,ou=People,dc=company,dc=local
+objectClass: organizationalPerson
+objectClass: person
+objectClass: extensibleObject
+objectClass: uidObject
+objectClass: inetOrgPerson
+objectClass: top
+cn: John
+sn: Stucki
+uid: john
+givenName: John Stucki
+mail: john.stucki@company.local
+member: cn=Business,ou=Groups,dc=company,dc=local
+mobile: 9900001105
+ou: People
+userPassword: password
+
+dn: uid=admin,ou=People,dc=company,dc=local
+objectClass: organizationalPerson
+objectClass: person
+objectClass: extensibleObject
+objectClass: uidObject
+objectClass: inetOrgPerson
+objectClass: top
+cn: OpenShift
+sn: Admin
+uid: admin
+givenName: Openshift Cluster Admin
+mail: admin@company.local
+member: cn=ClusterAdmins,ou=groups,dc=company,dc=local
+mobile: 9900001101
+ou: People
+userPassword: password

@@ -1,0 +1,23 @@
+kind: LDAPSyncConfig
+apiVersion: v1
+url: ldap://192.168.100.81:30389
+insecure: true
+rfc2307:
+    groupsQuery:
+        baseDN: "ou=Groups,dc=company,dc=local"
+        scope: sub
+        derefAliases: never
+        pageSize: 0
+        filter: (objectClass=groupOfUniqueNames)
+    groupUIDAttribute: dn 
+    groupNameAttributes: [ cn ] 
+    groupMembershipAttributes: [ member ] 
+    usersQuery:
+        baseDN: "ou=People,dc=company,dc=local"
+        scope: sub
+        derefAliases: never
+        pageSize: 0
+    userUIDAttribute: dn 
+    userNameAttributes: [ mail ] 
+    tolerateMemberNotFoundErrors: false
+    tolerateMemberOutOfScopeErrors: false
