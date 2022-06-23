@@ -62,7 +62,7 @@ La ressource LDAPSyncConfig contient les paramètres dont le cluster OpenShift a
 On creer dans un premier temps la resource LDAPSyncConfig. 
 
 ```shell
-oc apply -f ldapsyncCOnfig.yaml
+oc apply -f ldapsyncConfig.yaml
 ```
 
 Ce manifest fournis définition de requête LDAP pour les entrées d'utilisateur et de groupe, ainsi que les attributs avec lesquels les représenter dans les enregistrements internes d'OpenShift Container Platform.
