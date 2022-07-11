@@ -6,7 +6,7 @@ Ce guide decris comment synchroniser les Groupes Openshift avec un LDAP. On comm
 Le protocole LDAP (Lightweight Directory Access Protocol) est un protocole qui  permet d'accéder à des bases d'informations sur les utilisateurs d'un réseau, via l'interrogation d'annuaires. Il utilise pour cela un autre protocole, TCP/IP. Nous utiliserons ici OpenLDAP une implementation libre du procole LDAP en utilisant l'image bintanmi openldap.
 
 ```shell
-oc apply -f openldap.yaml 
+oc apply -f deploy-ldap.yaml 
 ```
 
 Ce manifest creer un Namespace openldap-auth, un service exposant via NodePort sur le port 30389 l'application openldap, un PersistenVolumclaim openldap-data qui sera monte sur /bitnami/openldap, et un deploiement de l'image. On ajoute des variables d'environnement pour specifie le Domain component (dc) et le login/password de l'admin (ici admin:admin dans notre fichier yaml). 
