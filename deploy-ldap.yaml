@@ -9,18 +9,17 @@ metadata:
 apiVersion: v1
 kind: Service
 metadata:
+  name: openldap
+  labels:
     name: openldap
-    namespace: openldap
-    labels:
-        app.kubernetes.io/name: openldap
 spec:
-    type: ClusterIP
-    ports:
-        - name: tcp-ldap
-          port: 1389
-          targetPort: tcp-ldap
-    selector:
-        app.kubernetes.io/name: openldap
+  type: NodePort
+  ports:
+    - port: 1389
+      nodePort: 30389
+      name: http
+  selector:
+    app: openldap
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -42,14 +41,15 @@ spec:
         deploymentconfig: openldap
     spec:
       containers:
-      - image: quay.io/feven/openldap
+      - image: quay.io/feven/openldap-bitnami
         imagePullPolicy: Always
         name: openldap
         env:
-            - name: OPENLDAP_ROOT_DN_SUFFIX
-              value: "dc=company,dc=local"
-            - name: OPENLDAP_ROOT_PASSWORD
+            - name: LDAP_ADMIN_USERNAME
               value: "admin"
-
-
-
+            - name: LDAP_ADMIN_PASSWORD
+              value: "adminpassword"
+            - name: LDAP_USERS
+              value: "customeuser"
+            - name: LDAP_PASSWORDS
+              value: "custompassword"
