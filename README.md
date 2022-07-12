@@ -14,7 +14,7 @@ Ce manifest creer un Namespace openldap-auth, un service exposant via NodePort s
 Une fois que le pod est running on peut verifier que celui-ci fonctionne avec la commande suivante :
 
 ```shell
-ldapsearch -x -H ldap://192.168.100.81:30389 -b  'dc=company,dc=local' 
+ldapsearch -x -H ldap://10.109.240.12:30389 -b 'ou=People,dc=example,dc=org'
 ```
 
 L'adresse Ip dois etre remplacer par l'IP de l'un de noeuds de votre cluster. 
@@ -22,7 +22,7 @@ L'adresse Ip dois etre remplacer par l'IP de l'un de noeuds de votre cluster.
 Vous pouvew ensuite utiliser le fichier ldif pour construire le contenue de votre AD. L'exemple presentee ici dispose de deux Organisation Unit (Groups et People). Il creer egalement 4 groupes ClusterAdmins, Managers, Developers et Business ansi que des utilisateurs appartenant a ces 4 groupes.
 
 ```shell
-ldapmodify -a -x -H ldap://192.168.100.81:30389 -D 'cn=admin,dc=company,dc=local' -f Company.ldif -W -cZ
+ldapmodify -a -x -D "cn=admin,dc=example,dc=org" -w adminpassword -H ldap://10.109.240.13:30389 -f-f Company.ldif
 ```
 
 Vous pouview verifier que les groupes et utilisateurs on correctement ete ajoute avec la meme commande que precedemment.
