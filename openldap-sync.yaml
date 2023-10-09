@@ -61,7 +61,7 @@ data:
             filter: (objectClass=groupOfUniqueNames)
         groupUIDAttribute: dn
         groupNameAttributes: [ cn ]
-        groupMembershipAttributes: [ member ]
+        groupMembershipAttributes: [ uniqueMember ]
         usersQuery:
             baseDN: "ou=People,dc=example,dc=org"
             scope: sub

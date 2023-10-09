@@ -61,6 +61,12 @@ On peut ensuite verifier que le processus de synchronisation est correctement ca
 oc adm groups sync --sync-config ldapsyncConfig.yaml 
 ```
 
+Si l'output semble ok on l'applique
+
+```shell
+oc adm groups sync --sync-config ldapsyncConfig.yaml
+```
+
 Enfin on va mettre en place un CronJob pour realiser une synchronisation periodique entre Openshift et le LDAP. 
 Ce manifest :
   - creer un nouveau namespace [ldap-sync]
@@ -77,7 +83,13 @@ Lorsque le cronjob aura ete applique vous devriez voir dans la section Openshift
 
 ![idp](./images/group-GUI.png)
 
+#Clean
 
+```
+oc delete deployment -n default
+oc edit Oauth cluster #remove the spec for ldap
+oc delete ns ldap-sync
+```
 
 
 
