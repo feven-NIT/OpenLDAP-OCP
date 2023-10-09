@@ -54,7 +54,7 @@ data:
     insecure: true
     rfc2307:
         groupsQuery:
-            baseDN: "ou=Groups,dc=company,dc=local"
+            baseDN: "ou=Groups,dc=example,dc=org"
             scope: sub
             derefAliases: never
             pageSize: 0
@@ -63,12 +63,12 @@ data:
         groupNameAttributes: [ cn ]
         groupMembershipAttributes: [ member ]
         usersQuery:
-            baseDN: "ou=People,dc=company,dc=local"
+            baseDN: "ou=People,dc=example,dc=org"
             scope: sub
             derefAliases: never
             pageSize: 0
         userUIDAttribute: dn
-        userNameAttributes: [ mail ]
+        userNameAttributes: [ uid ]
         tolerateMemberNotFoundErrors: false
         tolerateMemberOutOfScopeErrors: false
 ---

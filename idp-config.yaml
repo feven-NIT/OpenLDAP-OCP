@@ -19,4 +19,4 @@ spec:
         preferredUsername:
         - uid
       insecure: true
-      url: "ldap://192.168.100.81:30389/ou=platform,dc=company,dc=local?uid"
+      url: "ldap://10.6.82.183:30389/ou=People,dc=example,dc=org?uid"

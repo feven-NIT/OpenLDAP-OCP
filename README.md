@@ -11,25 +11,17 @@ oc apply -f deploy-ldap.yaml
 
 Ce manifest creer un Namespace openldap-auth, un service exposant via NodePort sur le port 30389 l'application openldap, un PersistenVolumclaim openldap-data qui sera monte sur /bitnami/openldap, et un deploiement de l'image. On ajoute des variables d'environnement pour specifie le Domain component (dc) et le login/password de l'admin (ici admin:admin dans notre fichier yaml). 
 
-Une fois que le pod est running on peut verifier que celui-ci fonctionne avec la commande suivante :
-
-```shell
-ldapsearch -x -H ldap://10.109.240.12:30389 -b 'ou=People,dc=example,dc=org'
-```
-
-L'adresse Ip dois etre remplacer par l'IP de l'un de noeuds de votre cluster. 
-
 Vous pouvew ensuite utiliser le fichier ldif pour construire le contenue de votre AD. L'exemple presentee ici dispose de deux Organisation Unit (Groups et People). Il creer egalement 4 groupes ClusterAdmins, Managers, Developers et Business ansi que des utilisateurs appartenant a ces 4 groupes.
 
 ```shell
-ldapmodify -a -x -D "cn=admin,dc=example,dc=org" -w adminpassword -H ldap://10.109.240.13:30389 -f-f Company.ldif
+ldapmodify -a -x -D "cn=admin,dc=example,dc=org" -w adminpassword -H ldap://10.109.240.13:30389 -f company.ldif
 ```
 
 Vous pouview verifier que les groupes et utilisateurs on correctement ete ajoute avec la meme commande que precedemment.
 
 
 ```shell
-ldapsearch -x -H ldap://192.168.100.81:30389 -b  'dc=company,dc=local' 
+ldapsearch -x -H ldap://192.168.100.81:30389 -b  'dc=example,dc=org' 
 ```
 
 ## Configuring le LDAP identity Provider
@@ -60,10 +52,6 @@ attribués à l'aide du système OpenShift RBAC et ne sont pas hérités de l'Id
 La ressource LDAPSyncConfig contient les paramètres dont le cluster OpenShift a besoin pour la synchronisation des groupes, qui peut être effectuée manuellement ou à l'aide d'un CronJob.
 
 On creer dans un premier temps la resource LDAPSyncConfig. 
-
-```shell
-oc apply -f ldapsyncConfig.yaml
-```
 
 Ce manifest fournis définition de requête LDAP pour les entrées d'utilisateur et de groupe, ainsi que les attributs avec lesquels les représenter dans les enregistrements internes d'OpenShift Container Platform.
 

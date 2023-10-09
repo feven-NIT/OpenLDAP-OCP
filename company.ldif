@@ -15,10 +15,7 @@ objectClass: groupOfUniqueNames
 objectClass: top
 cn: ClusterAdmins
 description: The group of openshift cluster adminstrators
-uniqueMember: uid=rama,ou=People,dc=example,dc=org
-uniqueMember: uid=krishna,ou=People,dc=example,dc=org
 uniqueMember: uid=admin,ou=People,dc=example,dc=org
-uniqueMember: uid=kameshs,ou=People,dc=example,dc=org
 
 dn: cn=Managers,ou=Groups,dc=example,dc=org
 objectClass: groupOfUniqueNames

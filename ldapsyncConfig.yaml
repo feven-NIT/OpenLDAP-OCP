@@ -1,23 +1,26 @@
 kind: LDAPSyncConfig
 apiVersion: v1
-url: ldap://192.168.100.81:30389
+url: ldap://10.6.82.183:30389
 insecure: true
+groupUIDNameMapping:
+  "cn=ClusterAdmins,ou=Groups,dc=example,dc=org": admins
+  "cn=Developers,ou=Groups,dc=example,dc=org": authenticated
 rfc2307:
     groupsQuery:
-        baseDN: "ou=Groups,dc=company,dc=local"
+        baseDN: "ou=Groups,dc=example,dc=org"
         scope: sub
         derefAliases: never
         pageSize: 0
         filter: (objectClass=groupOfUniqueNames)
     groupUIDAttribute: dn 
     groupNameAttributes: [ cn ] 
-    groupMembershipAttributes: [ member ] 
+    groupMembershipAttributes: [ uniqueMember ] 
     usersQuery:
-        baseDN: "ou=People,dc=company,dc=local"
+        baseDN: "ou=People,dc=example,dc=org"
         scope: sub
         derefAliases: never
         pageSize: 0
     userUIDAttribute: dn 
-    userNameAttributes: [ mail ] 
+    userNameAttributes: [ uid ] 
     tolerateMemberNotFoundErrors: false
     tolerateMemberOutOfScopeErrors: false
