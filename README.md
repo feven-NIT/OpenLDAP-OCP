@@ -14,14 +14,14 @@ Ce manifest creer un Namespace openldap-auth, un service exposant via NodePort s
 Vous pouvew ensuite utiliser le fichier ldif pour construire le contenue de votre AD. L'exemple presentee ici dispose de deux Organisation Unit (Groups et People). Il creer egalement 4 groupes ClusterAdmins, Managers, Developers et Business ansi que des utilisateurs appartenant a ces 4 groupes.
 
 ```shell
-ldapmodify -a -x -D "cn=admin,dc=example,dc=org" -w adminpassword -H ldap://10.109.240.13:30389 -f company.ldif
+ldapmodify -a -x -D "cn=admin,dc=example,dc=org" -w adminpassword -H ldap://10.6.82.183:30389 -f company.ldif
 ```
 
 Vous pouview verifier que les groupes et utilisateurs on correctement ete ajoute avec la meme commande que precedemment.
 
 
 ```shell
-ldapsearch -x -H ldap://192.168.100.81:30389 -b  'dc=example,dc=org' 
+ldapsearch -x -H ldap://10.6.82.183:30389 -b  'dc=example,dc=org' 
 ```
 
 ## Configuring le LDAP identity Provider
